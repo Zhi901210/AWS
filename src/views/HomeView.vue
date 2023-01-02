@@ -23,15 +23,15 @@
 
   <!-- 課程列表 -->
   <div class="lt">課程單元</div>
-  <div class="list"  v-for="name in names" :key="name">
+  <div class="list"  v-for="data in datas" :key="data">
     <div class="list-img">5</div>
     <div class="list-title">
-      <p>{{name}}</p>
+      <p>{{ data.title}}</p>
       <div class="list-progress progress">
         <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-      <div class="list-btn  btn btn-primary stretched-link">
-        進入課程
+      <div >
+        <RouterLink :to="data.to" class="list-btn  btn btn-primary stretched-link">進入課程</RouterLink>
       </div>
     </div>
   </div>
@@ -39,8 +39,25 @@
 
 <script setup>
 import { ref } from "vue";
-const names = ref(['AWS Certified Cloud Practitioner', 'AWS Certified Developer - Associate', 'AWS Certified Solutions Architect - Associate', 'AWS Certified Database - Specialty','AWS Certified Machine Learning - Specialty']);
 
+const datas = ref([{
+  title: 'AWS Certified Cloud Practitioner',
+  to:'/ccp'
+  },
+  {
+    title: 'AWS Certified Developer - Associate',
+    to: '/cdv'
+  }, {
+    title: 'AWS Certified Solutions Architect - Associate',
+    to: '/saa'
+  }, {
+    title: 'AWS Certified Database',
+    to: '/db'
+  }, {
+    title: 'AWS Certified Machine Learning - Specialty',
+    to: '/ml'
+  },
+])
 </script>
 
 <style scoped>
